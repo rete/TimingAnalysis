@@ -1,4 +1,6 @@
-# TimingAnalaysis - Collection of various utilities and Marlin(MT) processors for timing studies
+# TimingAnalysis 
+
+Collection of various utilities and Marlin(MT) processors for timing studies
 
 [![Build Status](https://travis-ci.org/rete/TimingAnalysis.svg?branch=master)](https://travis-ci.org/rete/TimingAnalysis)
 
