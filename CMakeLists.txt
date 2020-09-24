@@ -1,7 +1,7 @@
 ########################################################
 # cmake file for building TimingAnalysis
 # @author Remi Ete, DESY
-cmake_minimum_required( VERSION 2.8 FATAL_ERROR )
+cmake_minimum_required( VERSION 3.14 FATAL_ERROR )
 ########################################################
 
 # project name
