@@ -5,7 +5,7 @@ source $ILCSOFT/init_ilcsoft.sh
 cd /Package
 mkdir build
 cd build
-cmake -GNinja -DSIO_BUILTIN_ZLIB=$BUILTIN_ZLIB -DSIO_EXAMPLES=ON -DCMAKE_CXX_FLAGS="-fdiagnostics-color=always" .. && \
+cmake -GNinja -C $ILCSOFT/ILCSoft.cmake -DCMAKE_CXX_FLAGS="-fdiagnostics-color=always" .. && \
 ninja  -k 0 && \
 ninja install 
 #&& \
