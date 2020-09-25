@@ -23,14 +23,16 @@ find_package( Marlin 01.17 REQUIRED )
 find_package( ROOT 6.16 REQUIRED )
 
 include( ilcsoft_default_settings )
+include( GNUInstallDirs )
 
 # make the package library
 file( GLOB library_sources source/src/*.cc )
 add_library( ${PROJECT_NAME} SHARED ${library_sources} )
 add_library( ${PROJECT_NAME}::Core ALIAS ${PROJECT_NAME} )
 target_include_directories( ${PROJECT_NAME} BEFORE PUBLIC source/include )
-target_include_directories( ${PROJECT_NAME} SYSTEM PRIVATE ${streamlog_INCLUDE_DIRS} ) #${Marlin_INCLUDE_DIRS} )
-target_link_libraries( ${PROJECT_NAME} PUBLIC ROOT::Core ${streamlog_LIBRARIES} )#${Marlin_LIBRARIES} )
+target_include_directories( ${PROJECT_NAME} SYSTEM PRIVATE ${streamlog_INCLUDE_DIRS} )
+target_link_libraries( ${PROJECT_NAME} PUBLIC ROOT::Core ${streamlog_LIBRARIES} )
+install( TARGETS ${PROJECT_NAME} LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} )
 # TODO: install include directories if needed....
 
 # make Marlin processors library
@@ -39,6 +41,7 @@ add_library( ${PROJECT_NAME}Processors MODULE ${processors_sources} )
 add_library( ${PROJECT_NAME}::MarlinProcessors ALIAS ${PROJECT_NAME}Processors )
 target_include_directories( ${PROJECT_NAME}Processors SYSTEM PUBLIC ${Marlin_INCLUDE_DIRS} )
 target_link_libraries( ${PROJECT_NAME}Processors PUBLIC ${PROJECT_NAME}::Core ${Marlin_LIBRARIES} )
+install( TARGETS ${PROJECT_NAME}Processors LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} )
 
 # make MarlinMT processors library
 # file( GLOB processors_sources source/plugins/marlin/*.cc )
