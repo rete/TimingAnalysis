@@ -37,7 +37,7 @@ target_link_libraries( ${PROJECT_NAME} PUBLIC ROOT::Core ${streamlog_LIBRARIES} 
 file( GLOB processors_sources source/plugins/marlin/*.cc )
 add_library( ${PROJECT_NAME}Processors MODULE ${processors_sources} )
 add_library( ${PROJECT_NAME}::MarlinProcessors ALIAS ${PROJECT_NAME}Processors )
-target_include_directories( ${PROJECT_NAME}Processors PUBLIC ${Marlin_INCLUDE_DIRS} )
+target_include_directories( ${PROJECT_NAME}Processors SYSTEM PUBLIC ${Marlin_INCLUDE_DIRS} )
 target_link_libraries( ${PROJECT_NAME}Processors PUBLIC ${PROJECT_NAME}::Core ${Marlin_LIBRARIES} )
 
 # make MarlinMT processors library
